@@ -1,3 +1,5 @@
+@include('admin.dashboard')
+
 <form action="/admin/add/answer" method="post" style="display: flex;flex-direction: column; width: 600px;">
     @csrf
     <input type="text" placeholder="Type" name="type" required><br><br>

@@ -15,37 +15,39 @@ use Validator;
 
 class OpinionController extends Controller
 {
+
     public function index($page = null)
     {
-
-        $questions = QuestionYes::get();
-
-        $id_1     = $questions[0]['id'];
-        $id_2     = $questions[1]['id'];
-        $id_3     = $questions[2]['id'];
-        $answer_1 = Answer::where('harc_id', $id_1)->get();
-        $answer_2 = Answer::where('harc_id', $id_2)->get();
-        $answer_3 = Answer::where('harc_id', $id_3)->get();
-        $data     = [
-            'questions',
-            'answer_1',
-            'answer_2',
-            'answer_3'
-        ];
-
+        $query = QuestionYes::with('answers')->get();
+        $data  = ['questions'];
         if ($page == null) {
-            return view('opinion.opinion', compact($data));
+            $page      = 0;
+            $count     = $page + 1;
+            $questions = [];
+            for ($i = $page; $i <= $count; $i++) {
+                $questions[] = $query[$i];
+            }
         }
         elseif ($page == '2') {
-            return view('opinion.opinion2', compact($data));
+            $count     = $page + 1;
+            $questions = [];
+            for ($i = $page; $i <= $count; $i++) {
+                $questions[] = $query[$i];
+            }
         }
         else {
-            return view('opinion.opinion3', compact($data));
+            $count     = $page + 1;
+            $questions = [];
+            for ($i = $page; $i <= $count; $i++) {
+                $questions[] = $query[$i];
+            }
         }
+
+        return view('opinion.opinion', compact($data));
 
     }
 
-    public function getAnswer()
+    public function getAnswer($page = null)
     {
         $questions = QuestionYes::get();
         $option    = Option::get();
@@ -68,7 +70,7 @@ class OpinionController extends Controller
         $answer_8 = Answer::where('harc_id', $id_8)->get();
         $answer_9 = Answer::where('harc_id', $id_9)->get();
 
-        if ($_SERVER['REQUEST_URI'] == '/opinion/yes') {
+        if ($page == null) {
             return view('opinion.opinion_yes', compact([
                 'questions',
                 'answer_2',
@@ -76,7 +78,7 @@ class OpinionController extends Controller
                 'option'
             ]));
         }
-        elseif ($_SERVER['REQUEST_URI'] == '/opinion/yes/2') {
+        elseif ($page == 2) {
             return view('opinion.opinion_yes2', compact([
                 'questions',
                 'answer_4',
@@ -84,7 +86,7 @@ class OpinionController extends Controller
                 'option'
             ]));
         }
-        elseif ($_SERVER['REQUEST_URI'] == '/opinion/yes/3') {
+        elseif ($page == 3) {
             return view('opinion.opinion_yes3', compact([
                 'questions',
                 'answer_6',

@@ -69,12 +69,7 @@ Route::get('/my_cv/{id}','CV@show_cv');
 
 //opinions
 Route::get('/opinion/{page?}','OpinionController@index');
-//Route::get('/opinion/2','OpinionController@index');
-//Route::get('/opinion/3','OpinionController@index');
-Route::get('/opinion/yes','OpinionController@getAnswer');
-Route::get('/opinion/yes/2','OpinionController@getAnswer');
-Route::get('/opinion/yes/3','OpinionController@getAnswer');
-Route::get('/opinion/yes/4','OpinionController@getAnswer');
+Route::get('/yes/opinion/{page?}','OpinionController@getAnswer');
 Route::view('/opinion/end','opinion.opinion_end');
 Route::view('/opinion/coming','opinion.opinion_coming');
 
@@ -84,11 +79,28 @@ Route::post('/opinion2','OpinionController@insertOneLevel');
 Route::post('/questionyes','OpinionController@insertTwoLevel');
 
 
+Route::view('admin','admin.dashboard');
+
 
 Route::prefix('admin')->group(function(){
-    Route::get('/answer','AdminController@index');
+
+    Route::get('/answer/{page?}','AdminController@index');
+    Route::post('/add/answer', 'AdminController@addAnswer');
     Route::get('/answer/delete/{id}','AdminController@deleteAnswer');
     Route::get('/answer/edit/{id}','AdminController@editAnswer');
     Route::post('/answer/update','AdminController@updateAnswer');
-    Route::post('/add/answer', 'AdminController@addAnswer');
+    Route::post('/add/answer/no', 'AdminController@addAnswerNo');
+    Route::get('/answer/delete/no/{id}','AdminController@deleteAnswerNo');
+    Route::get('/answer/edit/no/{id}','AdminController@editAnswerNo');
+    Route::post('/answer/update/no','AdminController@updateAnswerNo');
+    Route::get('/question/{page?}','AdminController@redirectQuestion');
+    Route::post('/add/question/yes','AdminController@addQuestionYes');
+    Route::get('/question/yes/delete/{id}','AdminController@deleteQuestionYes');
+    Route::get('/question/yes/edit/{id}','AdminController@editQuestionYes');
+    Route::post('/question/yes/update','AdminController@updateQuestionYes');
+    Route::post('/add/question/no','AdminController@addQuestionNo');
+    Route::get('/question/no/delete/{id}','AdminController@deleteQuestionNo');
+    Route::get('/question/no/edit/{id}','AdminController@editQuestionNo');
+    Route::post('/question/no/update','AdminController@updateQuestionNo');
+
 });

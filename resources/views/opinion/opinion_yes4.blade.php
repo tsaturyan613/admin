@@ -33,8 +33,6 @@
         }
     }
     ?>
-
-
     <!-- <h5 class="subtitle" style="margin-top: 67px;  margin-bottom: 40px;">10․ Ի՞նչ առաջարկներ ունեք՝ կայքի և ուսումնական կենտրոնի հետ կապված։</h5> -->
     <?php
     //////////////////////////////////////////////////////////////////////////TITLE10////////////////////////////////////////////////////////////////////////////////////////
@@ -44,14 +42,11 @@
         echo "<h5 class='subtitle subtitle2'  style='margin-top: 67px; position: relative; display: block;'>".utf8_decode($questions[9]['question'])."։</h5>";
     }
     ?>
-
     <?php
     ///////////////////////////////////////////////////////////////////////ANSWER10////////////////////////////////////////////////////////////////////////////////////////////////
-
     foreach ($answer_9 as  $val) {
         if ($val['type']=='input') {
             echo "<div><input  type=".$val['type']." placeholder='Մուտքագրեք տեքստը' class='arr form-control shadow-none' style='margin-bottom: 60px; border:none;border-bottom: 3px solid #E5E5E6; color:black;' id=".$val['id']." name='inp'>
-
 </div>";
         }
         else{
@@ -64,11 +59,8 @@
     }
     ?>
     <!-- <div class=" letterscount" style="margin-bottom: 160px;"><input class="arr form-control shadow-none " id="arr1" placeholder="Մուտքագրեք տեքստը" maxlength="200"></input> <span class="count" id="count1"><span>0</span>/200</span></div> -->
-
-
-
         <div class="next-opinion"><button class="btn-primary go "> <a class="a" >ԱՎԱՐՏԵԼ</a></button></div>
-        <div class="previous" style="position: relative;" ><a style="position: absolute; left: 0; top: -29px; text-decoration: none;" href="/opinion/yes/3" ><svg style="margin-bottom: 3px; " xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16">
+        <div class="previous" style="position: relative;" ><a style="position: absolute; left: 0; top: -29px; text-decoration: none;" href="/yes/opinion/3" ><svg style="margin-bottom: 3px; " xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16">
                     <path d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z"/>
                 </svg>ՆԱԽՈՐԴ ԷՋ</div></a>
 {{--        <div class="numbers">--}}
@@ -81,5 +73,4 @@
 {{--        </div>--}}
     </div>
     <script src="{{asset('js/opinion_yes4.js')}}"></script>
-
 @endsection

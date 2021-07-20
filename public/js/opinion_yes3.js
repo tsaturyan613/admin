@@ -21,7 +21,7 @@ $(document).ready(function(){
     $(".go").click(function(){
         if ($('.subtitle1').children().next().attr("class")=="error1" && $('.subtitle2').children().next().attr("class")=="error2" ) {
             if (($(".radio").is(':checked'))  && $('.radio2').is(':checked')) {
-                window.location.href='/opinion/yes/4'
+                window.location.href='/yes/opinion/4'
             }
             else if(radio=="off"  && radio2=="off" ){
                 $(".error1").css("display","block")
@@ -32,7 +32,7 @@ $(document).ready(function(){
         }
         else if ($('.subtitle1').children().next().attr("class")=="error1") {
             if ($(".radio").is(':checked')) {
-                window.location.href='/opinion/yes/4'
+                window.location.href='/yes/opinion/4'
             }
             else if (radio=="off") {
                 $(".error1").css("display","block")
@@ -41,7 +41,7 @@ $(document).ready(function(){
         }
         else if ($('.subtitle2').children().next().attr("class")=="error2") {
             if ($('.radio2').is(':checked')) {
-                window.location.href='/opinion/yes/4'
+                window.location.href='/yes/opinion/4'
             }
             else if (radio2=="off") {
                 $(".error2").css("display","block")

@@ -44,11 +44,13 @@ $(document).ready(function(){
     });
 
     $(".go").click(function(){
+
         if ($('.subtitle1').children().next().attr("class")=="error1" && $('.subtitle2').children().next().attr("class")=="error2" ) {
-            if ($(".radio").is(':checked') && $(".yes").is(":checked")){
-                window.location.href='opinion/yes'
+
+            if ($(".radio").is(':checked') && $(".radio").val() == "ayo"){
+                window.location.href='/yes/opinion/'
             }
-            if ($(".radio").is(':checked') && $(".no").is(":checked")){
+            if ($(".radio").is(':checked') && $(".radio").val() == "voch"){
                 window.location.href='/opinion/2'
             }
             if ($(".radio").is(':checked') && $(".radio2").is(":checked")){
@@ -64,5 +66,6 @@ $(document).ready(function(){
             }
         }
     })
+
 });
 

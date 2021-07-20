@@ -55,7 +55,7 @@ $(document).ready(function(){
                     localStorage.setItem('questionYes1', question);
                     localStorage.getItem('questionYes1');
                 }
-                window.location.href='/opinion/yes/2'
+                window.location.href='/yes/opinion/2'
             }
             else if ((checkbox=="off" && other=="off")) {
                 $(".error1").css("display","block")
@@ -64,7 +64,7 @@ $(document).ready(function(){
         }
         else if ($('.subtitle2').children().next().attr("class")=="error2") {
             if ($('.radio').is(':checked')) {
-                window.location.href='/opinion/yes/2'
+                window.location.href='/yes/opinion/2'
             }
             else if (radio=="off") {
                 $(".error2").css("display","block")

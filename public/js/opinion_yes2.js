@@ -55,7 +55,7 @@ $(document).ready(function(){
     $(".go").click(function () {
         if ($('.subtitle1').children().next().attr("class")=="error1") {
             if (($(".radio").is(':checked'))) {
-                window.location.href='/opinion/yes/3'
+                window.location.href='/yes/opinion/3'
             }
             else if (radio=="off") {
                 $(".error1").css("display","block")
@@ -63,13 +63,13 @@ $(document).ready(function(){
             }
         }
         else{
-            window.location.href='/opinion/yes/3'
+            window.location.href='/yes/opinion/3'
         }
         if (($(".radio").is(':checked'))) {
             if($('select').val()==''){
                 localStorage.removeItem('teachers');
             }
-            window.location.href='/opinion/yes/3'
+            window.location.href='/yes/opinion/3'
         }
 
     })

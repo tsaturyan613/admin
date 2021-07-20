@@ -1,5 +1,4 @@
-
-<a href="/admin/answer">Admin Answer</a>
+@include('admin.dashboard')
 
 <h1>update answer</h1>
 
