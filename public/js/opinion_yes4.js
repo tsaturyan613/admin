@@ -62,7 +62,7 @@ $(document).ready(function(){
         }
         else if ($('.subtitle1').children().next().attr("class")=="error1") {
             if ($(".radio").is(':checked')) {
-                window.location.href='/opinion/end'
+                window.location.href='/end'
             }
             else if (radio=="off") {
                 $(".error1").css("display","block")

@@ -69,8 +69,8 @@ Route::get('/my_cv/{id}','CV@show_cv');
 
 //opinions
 Route::get('/opinion/{page?}','OpinionController@index');
-Route::get('/yes/opinion/{page?}','OpinionController@getAnswer');
-Route::view('/opinion/end','opinion.opinion_end');
+Route::get('/yes/opinion/{page?}','OpinionController@yesPages');
+Route::view('/end','opinion.opinion_end');
 Route::view('/opinion/coming','opinion.opinion_coming');
 
 

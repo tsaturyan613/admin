@@ -13,10 +13,20 @@ $(document).ready(function(){
             $(".error1").fadeOut()
         }
     })
-    $(".radio").click(function () {
-        radio="on"
-        if($(".radio").is(':checked')){
-            $(".arr1").fadeOut()
+    // $(".radio").click(function () {
+    //     radio="on"
+    //     if($(".radio").is(':checked')){
+    //         // $(".arr1").fadeOut()
+    //         $(".error1").fadeOut()
+    //         localStorage.setItem('questionNo3', $(this).next().text());
+    //         localStorage.getItem('questionNo3');
+    //     }
+    // })
+
+    $(".radio1").click(function () {
+        // radio="on"
+        if($(".radio1").is(':checked')){
+            // $(".arr1").fadeOut()
             $(".error1").fadeOut()
             localStorage.setItem('questionNo3', $(this).next().text());
             localStorage.getItem('questionNo3');
@@ -24,7 +34,30 @@ $(document).ready(function(){
     })
 
 
+    $('.other:button').toggle(function(){
+        $('input:checkbox').attr('checked','checked');
+        $(this).val('uncheck all');
+    },function(){
 
+    })
+
+
+    $(".other").click(function (){
+        $('input:checkbox').removeAttr('checked');
+        $(this).val('check all');
+        if($(".other").is(":checked")){
+            console.log("Checkbox is checked.");
+        }else{
+
+            alert("Sdsadsadsad");
+
+        }
+
+    });
+    $(".radio1").click(function (){
+        $('.other').removeAttr('checked');
+        $(".other-input").css("display", "none");
+    });
     $(".go-finish").click(function () {
 
         let question1=localStorage.getItem('question1');
@@ -52,6 +85,7 @@ $(document).ready(function(){
             }
         });
 
+        localStorage.removeItem("questionNo3");
         localStorage.removeItem("questionNo3");
 
         if ($('.subtitle1').children().next().attr("class")=="error1" && $('.subtitle2').children().next().attr("class")=="error2" && $('.subtitle3').children().next().attr("class")=="error3") {
@@ -147,6 +181,7 @@ $(document).ready(function(){
         else {
             window.location.href='/opinion/3'
         }
+
         if ($('.ar1').val()!=="") {
             $('.ar1').val()
             localStorage.setItem('questionNo3', $('.ar1').val());

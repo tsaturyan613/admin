@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
     let radio=$(".radio").val()
     let radio2=$(".radio2").val()
     let yes=$(".yes").val()
@@ -44,15 +45,25 @@ $(document).ready(function(){
     });
 
     $(".go").click(function(){
-
-        if ($('.subtitle1').children().next().attr("class")=="error1" && $('.subtitle2').children().next().attr("class")=="error2" ) {
-
-            if ($(".radio").is(':checked') && $(".radio").val() == "ayo"){
-                window.location.href='/yes/opinion/'
+        // $('input[name=radioName]:checked', '#myForm').val()
+        console.log($('.radio:radio:checked').parent());
+        $('.radio:radio:checked').each(function( k,v ) {
+            let questionId = $(v).attr('data-question-id');
+            let answer = v.value;
+            if (questionId === '57'){
+                if (answer === 'այո'){
+                    window.location.href='/yes/opinion/';
+                }else{
+                    window.location.href='/opinion/2'
+                }
             }
-            if ($(".radio").is(':checked') && $(".radio").val() == "voch"){
-                window.location.href='/opinion/2'
-            }
+        });
+
+        // alert($(".radio").val());
+        // if ($('.subtitle1').children().next().attr("class")=="error1" && $('.subtitle2').children().next().attr("class")=="error2" ) {
+        //     alert($('.span').text());
+
+
             if ($(".radio").is(':checked') && $(".radio2").is(":checked")){
                 window.location.href='/opinion/coming'
             }
@@ -64,8 +75,9 @@ $(document).ready(function(){
                 $(".error2").css("display","block")
                 $(".error2").effect( "shake", { direction: "up", times: 2, distance: 1}, 300 );
             }
-        }
-    })
 
+        // }
+
+    })
 });
 

@@ -18,22 +18,20 @@
                     <h5 class='subtitle subtitle1'  style='position: relative; display: block;'>
                         {{$key['question']}}</h5>
                 @endif
-                                <form action="" method="post" class="opinion-form">
+                                <form action="" method="post" class="opinion-form" id="form-{{$key['id']}}">
                                     @foreach ($key->answers as $k)
                                        @if ($k['type']=='input')
                                             <input type="{{  $k['type'] }}" placeholder='Մուտքագրեք տեքստը' class='arr form-control shadow-none' style='border:none;border-bottom: 3px solid #E5E5E6;' id="{{  $k['id'] }}" name='inp'>
-                                                <span class='count' id='count2'><span >0</span>/50</span>
+                                            <span class='count' id='count2'><span >0</span>/50</span>
                                         @else
                                             <p>
-                                                <input type="{{  $k['type'] }}" class='radio' id="{{  $k['id'] }}" name='inp'>
+                                                <input type="{{  $k['type'] }}" data-question-id="{{$key['id']}}" class='radio' id="{{  $k['id'] }}" value="{{  $k['patasxan'] }}" name='inp'>
                                                 <label for="{{  $k['id'] }}">
-                                                    <span class=span>{{  $k['patasxan'] }}</span>
+                                                <span class="span">{{  $k['patasxan'] }}</span>
                                                 </label>
                                             </p>
                                         @endif
                                     @endforeach
-
-
                                 </form>
             </div>
             @endforeach

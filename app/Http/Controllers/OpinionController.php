@@ -27,13 +27,18 @@ class OpinionController extends Controller
             for ($i = $page; $i <= $count; $i++) {
                 $questions[] = $query[$i];
             }
+            return view('opinion.opinion', compact($data));
+
         }
         elseif ($page == '2') {
-            $count     = $page + 1;
+            $count     = $page + 2;
             $questions = [];
             for ($i = $page; $i <= $count; $i++) {
                 $questions[] = $query[$i];
             }
+
+            return view('opinion.opinion2', compact($data));
+
         }
         else {
             $count     = $page + 1;
@@ -41,15 +46,16 @@ class OpinionController extends Controller
             for ($i = $page; $i <= $count; $i++) {
                 $questions[] = $query[$i];
             }
+            return view('opinion.opinion3', compact($data));
         }
-
-        return view('opinion.opinion', compact($data));
 
     }
 
-    public function getAnswer($page = null)
+    public function yesPages($page = null)
     {
-        $questions = QuestionYes::get();
+        $query = QuestionYes::with('answers')->get();
+        $data  = ['questions'];
+//        $questions = QuestionYes::get();
         $option    = Option::get();
 
         $id_2 = $questions[2]['id'];
@@ -104,8 +110,9 @@ class OpinionController extends Controller
         }
     }
 
-    public function insertOneLevel()
+    public function insertOneLevel(Request $request)
     {
+
 
         $question1   = $_POST['question1'];
         $question2   = $_POST['question2'];
@@ -113,6 +120,7 @@ class OpinionController extends Controller
         $questionNo4 = $_POST['questionNo4'];
         $questionNo5 = $_POST['questionNo5'];
         $arr         = [];
+
         array_push($arr,
             $question1,
             $question2,
