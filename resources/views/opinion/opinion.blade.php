@@ -8,16 +8,18 @@
         <div class="page">
 
 
+{{--            <pre>{{ print_r($questions) }}</pre>--}}
             @foreach($questions as $key)
+
             <div>
-                @if ($key['checked']=="on")
+{{--                @if ($key['checked']=="on")--}}
                     <h5 class='subtitle subtitle1'  style='position: relative; display: block;'>
                         {{$key['question']}}
                         <span class='sas'>*</span> ։<span id=error1 class='error1'>Պարտադիր է լրացման</span></h5>
-                @else
-                    <h5 class='subtitle subtitle1'  style='position: relative; display: block;'>
-                        {{$key['question']}}</h5>
-                @endif
+{{--                @else--}}
+{{--                    <h5 class='subtitle subtitle1'  style='position: relative; display: block;'>--}}
+{{--                        {{$key['question']}}</h5>--}}
+{{--                @endif--}}
                                 <form action="" method="post" class="opinion-form" id="form-{{$key['id']}}">
                                     @foreach ($key->answers as $k)
                                        @if ($k['type']=='input')

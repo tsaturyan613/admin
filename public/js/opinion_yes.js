@@ -7,14 +7,13 @@ $(document).ready(function(){
     radio="off"
 
 
-    let question=[]
     $(".checkbox").click(function(){
         checkbox="on"
         $(".error1").fadeOut()
-        question.push($(this).next().text())
-        localStorage.setItem('questionYes1', question);
-        localStorage.getItem('questionYes1');
+        $('.other').removeAttr('checked');
+        $(".other-input").css("display", "none");
     })
+
     $(".other").click(function () {
         other="on"
         if ($(".other").is(':checked')) {
@@ -25,7 +24,10 @@ $(document).ready(function(){
         else{
             $(".arr1").fadeOut()
         }
+        $('input:checkbox').removeAttr('checked');
+        $(this).val('check all');
     })
+
     $(".radio").click(function(){
         $(".error2").fadeOut()
         radio="on"
@@ -35,38 +37,27 @@ $(document).ready(function(){
 
 
     $(".go").click(function(){
+
+
+        if ($(".checkbox").is(':checked')) {
+            let arr = [];
+            arr.push($('.checkbox:checked').next().text());
+            localStorage.setItem('questionYes1', arr);
+            localStorage.getItem('questionYes1');
+        } else {
+            localStorage.setItem('questionYes1', $("#arr1").val());
+            localStorage.getItem('questionYes1');
+        }
+
         if ($('.subtitle1').children().next().attr("class")=="error1" && $('.subtitle2').children().next().attr("class")=="error2" ) {
-            if ((($(".checkbox").is(':checked')) || ($(".other").is(":checked")))  && $('.radio').is(':checked')) {
-                window.location.href='./yes2.php'
+            if ((($(".checkbox").is(':checked')) || ($(".other").is(":checked")))  && $('.radio').is(':checked') || $('.other').is(':checked')) {
+                window.location.href='/yes/opinion/2'
             }
             if(checkbox=="off" && other=="off" ){
                 $(".error1").css("display","block")
                 $(".error1").effect( "shake", { direction: "up", times: 2, distance: 1}, 300 );
             }
             if(radio=="off" ){
-                $(".error2").css("display","block")
-                $(".error2").effect( "shake", { direction: "up", times: 2, distance: 1}, 300 );
-            }
-        }
-        else if ($('.subtitle1').children().next().attr("class")=="error1") {
-            if (($(".checkbox").is(':checked')) || ($(".other").is(":checked"))) {
-                if ($('.arr').val()!=="") {
-                    question.push($('.arr').val())
-                    localStorage.setItem('questionYes1', question);
-                    localStorage.getItem('questionYes1');
-                }
-                window.location.href='/yes/opinion/2'
-            }
-            else if ((checkbox=="off" && other=="off")) {
-                $(".error1").css("display","block")
-                $(".error1").effect( "shake", { direction: "up", times: 2, distance: 1}, 300 );
-            }
-        }
-        else if ($('.subtitle2').children().next().attr("class")=="error2") {
-            if ($('.radio').is(':checked')) {
-                window.location.href='/yes/opinion/2'
-            }
-            else if (radio=="off") {
                 $(".error2").css("display","block")
                 $(".error2").effect( "shake", { direction: "up", times: 2, distance: 1}, 300 );
             }

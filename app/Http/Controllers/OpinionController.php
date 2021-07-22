@@ -53,28 +53,45 @@ class OpinionController extends Controller
 
     public function yesPages($page = null)
     {
-        $query = QuestionYes::with('answers')->get();
-        $data  = ['questions'];
-//        $questions = QuestionYes::get();
-        $option    = Option::get();
+//        $query = QuestionYes::with('answers')->get();
+//        $data  = ['questions'];
+        $questions = QuestionYes::get();
+//        $last_number = QuestionYes::orderBy('id','desc')->first();
 
-        $id_2 = $questions[2]['id'];
-        $id_3 = $questions[3]['id'];
-        $id_4 = $questions[4]['id'];
-        $id_5 = $questions[5]['id'];
-        $id_6 = $questions[6]['id'];
-        $id_7 = $questions[7]['id'];
-        $id_8 = $questions[8]['id'];
-        $id_9 = $questions[9]['id'];
+//        echo $last_number;
+//        die();
 
-        $answer_2 = Answer::where('harc_id', $id_2)->get();
-        $answer_3 = Answer::where('harc_id', $id_3)->get();
-        $answer_4 = Answer::where('harc_id', $id_4)->get();
-        $answer_5 = Answer::where('harc_id', $id_5)->get();
-        $answer_6 = Answer::where('harc_id', $id_6)->get();
-        $answer_7 = Answer::where('harc_id', $id_7)->get();
-        $answer_8 = Answer::where('harc_id', $id_8)->get();
-        $answer_9 = Answer::where('harc_id', $id_9)->get();
+
+
+//        $option    = Option::get();
+        $answer_ ='';
+for ($i = 2; $i <= 9 ; $i++){
+//    print_r($questions[$i]['id']);
+
+    if (isset($answer_)){
+        $answer_.$i = Answer::where('harc_id', $questions[$i]['id'])->first();
+    }
+
+//    print_r($answer_.$i);die();
+}
+
+//        $id_2 = $questions[2]['id'];
+//        $id_3 = $questions[3]['id'];
+//        $id_4 = $questions[4]['id'];
+//        $id_5 = $questions[5]['id'];
+//        $id_6 = $questions[6]['id'];
+//        $id_7 = $questions[7]['id'];
+//        $id_8 = $questions[8]['id'];
+//        $id_9 = $questions[9]['id'];
+//
+//        $answer_2 = Answer::where('harc_id', $id_2)->get();
+//        $answer_3 = Answer::where('harc_id', $id_3)->get();
+//        $answer_4 = Answer::where('harc_id', $id_4)->get();
+//        $answer_5 = Answer::where('harc_id', $id_5)->get();
+//        $answer_6 = Answer::where('harc_id', $id_6)->get();
+//        $answer_7 = Answer::where('harc_id', $id_7)->get();
+//        $answer_8 = Answer::where('harc_id', $id_8)->get();
+//        $answer_9 = Answer::where('harc_id', $id_9)->get();
 
         if ($page == null) {
             return view('opinion.opinion_yes', compact([
@@ -113,12 +130,11 @@ class OpinionController extends Controller
     public function insertOneLevel(Request $request)
     {
 
-
-        $question1   = $_POST['question1'];
-        $question2   = $_POST['question2'];
-        $questionNo3 = $_POST['questionNo3'];
-        $questionNo4 = $_POST['questionNo4'];
-        $questionNo5 = $_POST['questionNo5'];
+        $question1   = $request->question1;
+        $question2   = $request->question2;
+        $questionNo3 = $request->questionNo3;
+        $questionNo4 = $request->questionNo4;
+        $questionNo5 = $request->questionNo5;
         $arr         = [];
 
         array_push($arr,

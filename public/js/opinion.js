@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+    localStorage.clear();
     let radio=$(".radio").val()
     let radio2=$(".radio2").val()
     let yes=$(".yes").val()
@@ -9,54 +10,63 @@ $(document).ready(function(){
     no="off"
     yes="off"
 
-    $(".radio").click(function(){
-        radio="on"
-        $(".error1").fadeOut()
-        localStorage.setItem('question1',$(this).next().text());
-        localStorage.getItem('question1');
-    });
-    $(".radio2").click(function(){
-        if($(".radio2").is(':checked')){
-            $(".error2").fadeOut()
-            localStorage.setItem('question2', $(this).next().text());
-            localStorage.getItem('question2');
-            radio2="on"
-
-        }
-    });
-    $(".no").click(function(){
-        if($(".no").is(':checked')){
-
-            $(".error2").fadeOut()
-            localStorage.setItem('question2', $(this).next().text());
-            localStorage.getItem('question2');
-            no="on"
-        }
-    });
-
-    $(".yes").click(function(){
-        if($(".yes").is(':checked')){
-
-            $(".error2").fadeOut()
-            localStorage.setItem('question2', $(this).next().text());
-            localStorage.getItem('question2');
-            yes="on"
-        }
-    });
+    // $(".radio").click(function(){
+    //     radio="on"
+    //     $(".error1").fadeOut()
+    //     localStorage.setItem('question1',$(this).next().text());
+    //     localStorage.getItem('question1');
+    // });
+    // $(".radio2").click(function(){
+    //     if($(".radio2").is(':checked')){
+    //         $(".error2").fadeOut()
+    //         localStorage.setItem('question2', $(this).next().text());
+    //         localStorage.getItem('question2');
+    //         radio2="on"
+    //
+    //     }
+    // });
+    // $(".no").click(function(){
+    //     if($(".no").is(':checked')){
+    //
+    //         $(".error2").fadeOut()
+    //         localStorage.setItem('question2', $(this).next().text());
+    //         localStorage.getItem('question2');
+    //         no="on"
+    //     }
+    // });
+    //
+    // $(".yes").click(function(){
+    //     if($(".yes").is(':checked')){
+    //
+    //         $(".error2").fadeOut()
+    //         localStorage.setItem('question2', $(this).next().text());
+    //         localStorage.getItem('question2');
+    //         yes="on"
+    //     }
+    // });
 
     $(".go").click(function(){
-        // $('input[name=radioName]:checked', '#myForm').val()
-        console.log($('.radio:radio:checked').parent());
         $('.radio:radio:checked').each(function( k,v ) {
-            let questionId = $(v).attr('data-question-id');
+            console.log(k);
+            // let questionId = $(v).attr('data-question-id');
             let answer = v.value;
-            if (questionId === '57'){
+            if (k === 0){
+                localStorage.setItem('question1',v.value);
+                localStorage.getItem('question1');
+            }else{
+                localStorage.setItem('question2',v.value);
+                localStorage.getItem('question2');
+            }
+
+                if($(".radio").is(':checked')){
+                    $(".error1").fadeOut()
+                    radio="on"
+                }
                 if (answer === 'այո'){
                     window.location.href='/yes/opinion/';
                 }else{
                     window.location.href='/opinion/2'
                 }
-            }
         });
 
         // alert($(".radio").val());
